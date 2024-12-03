@@ -5,8 +5,9 @@
 int main(){
 
     time_t second;
-   seconds = time(NULL);
-   printf("Hours since January 1, 1970 = %ld\n", seconds/3600);
+    seconds = time(NULL);
+    printf("Hours since January 1, 1970 = %ld\n", seconds/3600);
     
+            
     return 0;
 }
