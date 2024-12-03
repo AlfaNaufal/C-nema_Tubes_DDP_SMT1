@@ -1,5 +1,5 @@
-#ifndef header_h
-#define header_h
+#ifndef login_h
+#define login_h
 
 
 typedef struct {
@@ -7,5 +7,7 @@ typedef struct {
     char username;
     char password;
 } akun;
+
+int login(akun * A1 );
 
 #endif

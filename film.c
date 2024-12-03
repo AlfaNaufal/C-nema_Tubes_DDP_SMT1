@@ -1,8 +1,11 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdbool.h>
+#include<time.h>
 #include "film.h"
 
-void tampilFilm(){
+
+void pilihFilm(){
     int a;
-    printf("Hello World!!");
+    printf("Hello World!!\n");
     scanf("%d", &a);
 }

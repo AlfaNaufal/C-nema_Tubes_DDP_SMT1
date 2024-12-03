@@ -1,45 +1,62 @@
-#include <stdio.h>
-#include "film.h"
+#include<stdio.h>
+#include<stdbool.h>
+#include<time.h>
 #include "login.h"
+#include "film.h"
 
-// Fungsi login
-int login(akun *A1) {
-    // Tampilan header
-    printf("========================================\n");
-    printf("          Selamat Datang di C'Nema      \n");
-    printf("========================================\n");
-    printf("Pilih opsi:\n");
-    printf("1. Login\n");
-    printf("2. Sign Up\n");
-    printf("----------------------------------------\n");
-    printf("Masukkan pilihan Anda: ");
-    scanf("%d", &((*A1).pilih));
-    system("cls");
+
+int login(akun * A1 ){
     
-    // Jika pilihan adalah login
-    if ((*A1).pilih == 1) {
-        printf("\n----------------------------------------\n");
-        printf("                LOGIN                   \n");
-        printf("----------------------------------------\n");
-        printf("Masukkan Username: ");
-        scanf("%s", &((*A1).username));
-        printf("Masukkan Password: ");
-        scanf("%s", &((*A1).password));
-        printf("\n----------------------------------------\n");
-        printf("Login berhasil! Selamat datang, %s.\n", (*A1).username);
-    } else if ((*A1).pilih == 2) {
-        printf("\n----------------------------------------\n");
-        printf("               SIGN UP                  \n");
-        printf("----------------------------------------\n");
-        printf("Fitur sign-up belum tersedia.\n");
-        printf("----------------------------------------\n");
-    } else {
-        printf("\n----------------------------------------\n");
-        printf("Pilihan tidak valid. Silakan coba lagi.\n");
-        printf("----------------------------------------\n");
-    }
-    system("cls");
-    tampilFilm();
-
-    return 0;
+    void delay_seconds(int seconds) {
+    time_t start_time = time(NULL);
+    while (time(NULL) < start_time + seconds);
 }
+
+
+    bool isValid = true;
+
+
+    while (isValid){
+    
+    printf("1.Login\n2.Sign Up\n");
+    scanf("%d", &((* A1).pilih));
+    if ( ((*A1).pilih) == 1){
+
+
+        printf("--------Login--------\n");
+        printf("masukkan username= ");
+        scanf("%s", &((* A1).username));
+        printf("masukkan password= ");
+        scanf("%s", &((* A1).password));
+        isValid = !isValid;
+        system("cls");
+        printf("Login berhasil!!\n");
+        delay_seconds(2);
+        system("cls");
+        pilihFilm();
+
+        
+    }else if ( ((*A1).pilih) == 2){
+    
+        printf("--------SignUp--------\n");
+        printf("masukkan username= ");
+        scanf("%s", &((* A1).username));
+        printf("masukkan password= ");
+        scanf("%s", &((* A1).password));
+        isValid = !isValid;
+        system("cls");
+        (*A1).pilih = 1;
+        printf("berhasil!! Silahkan Melakukan login\n");
+        delay_seconds(3);
+        // masuk(&A1);
+    
+    }else{
+        printf("Error 404: Option Not Found!! ");
+        delay_seconds(3);
+        system("cls");
+
+    }
+
+}
+
+    }
