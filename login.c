@@ -23,6 +23,32 @@ bool is_number(const char *str) {
     return true;
 }
 
+void masuk(akun *A1){
+
+    system("cls");
+    printf("========================================\n");
+    printf("                LOGIN                   \n");
+    printf("========================================\n");
+    printf("Masukkan Username: ");
+    scanf("%s", &((*A1).username));
+    printf("Masukkan Password: ");
+    scanf("%s", &((*A1).password));
+
+}
+
+void signUp(akun *A1){
+
+    system("cls");
+    printf("========================================\n");
+    printf("               SIGN UP                  \n");
+    printf("========================================\n");
+    printf("Masukkan Username: ");
+    scanf("%s", &((*A1).username));
+    printf("Masukkan Password: ");
+    scanf("%s", &((*A1).password));
+
+}
+
 // Fungsi login
 int login(akun *A1) {
     bool isValid = true;
@@ -47,14 +73,9 @@ int login(akun *A1) {
 
             // Pilihan login
             if (((*A1).pilih) == 1) {
-                system("cls");
-                printf("========================================\n");
-                printf("                LOGIN                   \n");
-                printf("========================================\n");
-                printf("Masukkan Username: ");
-                scanf("%s", &((*A1).username));
-                printf("Masukkan Password: ");
-                scanf("%s", &((*A1).password));
+
+                // Memanggil fungsi login 
+                masuk(A1);
 
                 // Konfirmasi login
                 isValid = !isValid;
@@ -68,14 +89,9 @@ int login(akun *A1) {
             } 
             // Pilihan sign up
             else if (((*A1).pilih) == 2) {
-                system("cls");
-                printf("========================================\n");
-                printf("               SIGN UP                  \n");
-                printf("========================================\n");
-                printf("Masukkan Username: ");
-                scanf("%s", &((*A1).username));
-                printf("Masukkan Password: ");
-                scanf("%s", &((*A1).password));
+
+                // Memanggil fungsi signUp 
+                signUp(A1);
 
                 // Konfirmasi sign up
                 isValid = !isValid;
@@ -84,6 +100,9 @@ int login(akun *A1) {
                 printf("    Berhasil! Silakan Login Kembali     \n");
                 printf("========================================\n");
                 delay_seconds(3);
+                system("cls");
+                masuk(A1);
+
             } 
             // Jika angka tidak valid
             else {
