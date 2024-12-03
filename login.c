@@ -2,6 +2,7 @@
 #include<stdbool.h>
 #include<time.h>
 #include "login.h"
+#include "film.h"
 
 
 int login(akun * A1 ){
@@ -10,6 +11,8 @@ int login(akun * A1 ){
     time_t start_time = time(NULL);
     while (time(NULL) < start_time + seconds);
 }
+
+
     bool isValid = true;
 
 
@@ -27,6 +30,10 @@ int login(akun * A1 ){
         scanf("%s", &((* A1).password));
         isValid = !isValid;
         system("cls");
+        printf("Login berhasil!!\n");
+        delay_seconds(2);
+        system("cls");
+        pilihFilm();
 
         
     }else if ( ((*A1).pilih) == 2){
@@ -38,7 +45,10 @@ int login(akun * A1 ){
         scanf("%s", &((* A1).password));
         isValid = !isValid;
         system("cls");
-        ((*A1).pilih) = 1
+        (*A1).pilih = 1;
+        printf("berhasil!! Silahkan Melakukan login\n");
+        delay_seconds(3);
+        // masuk(&A1);
     
     }else{
         printf("Error 404: Option Not Found!! ");
@@ -46,6 +56,7 @@ int login(akun * A1 ){
         system("cls");
 
     }
+
 }
 
     }
