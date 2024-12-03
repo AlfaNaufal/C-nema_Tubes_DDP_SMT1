@@ -3,6 +3,9 @@
 
 
 typedef struct {
+    int pilih;
     char username;
     char password;
 } akun;
+
+#endif
