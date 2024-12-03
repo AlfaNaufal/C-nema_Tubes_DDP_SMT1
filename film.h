@@ -4,8 +4,8 @@
 
 typedef struct {
     int pilih;
-    char judul;
-    char genre;
+    char judul[100];
+    char genre[50];
 } film;
 
 void pilihFilm();
