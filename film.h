@@ -1,14 +1,13 @@
-#ifndef FILM_H
-#define FILM_H
+#ifndef film_h
+#define film_h
 
 
+// typedef struct {
+//     int pilih;
+//     char judul;
+//     char genre;
+// } film;
 
-// film tampilFilm(char judul, char genre);
-
-// void tambahFilm(char judul, char genre);
-
-// void bukaFilm();
-
-void halo();
+void pilihFilm();
 
 #endif

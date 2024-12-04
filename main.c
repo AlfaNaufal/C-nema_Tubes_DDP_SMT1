@@ -1,15 +1,17 @@
-#include <stdio.h>
-#include <string.h>
-#include "film.h"
+#include<stdio.h>
+#include<time.h>
+#include "login.h"
 
 
 int main(){
+    akun A1;
+    login(&A1);
 
-        // char judul, genre;
 
-        // void tambahFilm(const char *judul,const char *genre);
+    time_t seconds;
+    seconds = time(NULL);
+    printf("Hours since January 1, 1970 = %ld\n", seconds/3600);
 
-        void halo();
     
     return 0;
 }
