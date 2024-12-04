@@ -41,7 +41,7 @@ void masuk(akun *A1){
     printf("             Login berhasil!            \n");
     printf("========================================\n");
     // delay_seconds(2);
-    sleep(2);
+    sleep(1);
     system("cls");
     // pilihFilm(); // Panggil fungsi untuk memilih film
     // pilihJadwal();

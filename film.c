@@ -55,7 +55,7 @@ void pilihFilm() {
         // Exit setelah memilih film
         break;
     }
-    delay_seconds(4);
+    delay_seconds(3);
     system("cls");
 }
 
