@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 #include "film.h"
 
 // Daftar film yang tersedia
@@ -12,10 +13,13 @@ film daftarFilm[] = {
     {6, "The Dark Knight", "Action, Crime, Drama"}
 };
 
-// Ini buat jumlah film nya
+// Jumlah film dalam daftar
 int jumlahFilm = sizeof(daftarFilm) / sizeof(daftarFilm[0]);
 
-// Nampilin film nya trus usernya milih
+// Variabel global untuk menyimpan film yang dipilih
+film selectedFilm;
+
+// Fungsi untuk memilih film
 void pilihFilm() {
     int pilihan;
 
@@ -35,20 +39,27 @@ void pilihFilm() {
         // Memvalidasi input
         if (scanf("%d", &pilihan) != 1 || pilihan < 1 || pilihan > jumlahFilm) {
             // Menangani input yang tidak valid
-            while(getchar() != '\n'); // membersihkan buffer
+            while (getchar() != '\n'); // membersihkan buffer
             printf("Pilihan tidak valid, coba lagi!\n");
-            delay_seconds(2);
-            system("cls");
             continue;
         }
 
+        // Menyimpan pilihan film
+        selectedFilm = daftarFilm[pilihan - 1];
+
         // Menampilkan film yang dipilih
-        printf("\nAnda memilih: %s\n", daftarFilm[pilihan - 1].judul);
-        printf("Genre: %s\n", daftarFilm[pilihan - 1].genre);
+        printf("\nAnda memilih: %s\n", selectedFilm.judul);
+        printf("Genre: %s\n", selectedFilm.genre);
         printf("Terima kasih telah memilih film di C'Nema!\n");
         
         // Exit setelah memilih film
         break;
     }
+    delay_seconds(2);
+    system("cls");
 }
 
+// Fungsi untuk mendapatkan film yang dipilih
+film getSelectedFilm() {
+    return selectedFilm;
+}

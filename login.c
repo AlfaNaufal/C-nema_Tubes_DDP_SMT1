@@ -103,7 +103,7 @@ int login(akun *A1) {
                 isValid = !isValid;
 
                 // pilihFilm(); // Panggil fungsi untuk memilih film
-                pilihFilm();
+                //pilihFilm();
 
             } 
             // Pilihan sign up
