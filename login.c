@@ -2,10 +2,12 @@
 #include <stdbool.h>
 #include <time.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <ctype.h>
 #include <string.h>
 #include "login.h"
 #include "film.h"
+#include "jadwal.h"
 
 // Fungsi untuk memberikan jeda waktu (delay)
 void delay_seconds(int seconds) {
@@ -34,6 +36,16 @@ void masuk(akun *A1){
     printf("Masukkan Password: ");
     scanf("%s", &((*A1).password));
 
+    system("cls");
+    printf("========================================\n");
+    printf("             Login berhasil!            \n");
+    printf("========================================\n");
+    // delay_seconds(2);
+    sleep(2);
+    system("cls");
+    // pilihFilm(); // Panggil fungsi untuk memilih film
+    // pilihJadwal();
+
 }
 
 void signUp(akun *A1){
@@ -46,6 +58,16 @@ void signUp(akun *A1){
     scanf("%s", &((*A1).username));
     printf("Masukkan Password: ");
     scanf("%s", &((*A1).password));
+
+    system("cls");
+    printf("========================================\n");
+    printf("        Berhasil! Silakan Login         \n");
+    printf("========================================\n");
+    delay_seconds(3);
+    system("cls");
+
+    // Memanggil fungsi login 
+    masuk(A1);
 
 }
 
@@ -79,13 +101,10 @@ int login(akun *A1) {
 
                 // Konfirmasi login
                 isValid = !isValid;
-                system("cls");
-                printf("========================================\n");
-                printf("         Login berhasil!               \n");
-                printf("========================================\n");
-                delay_seconds(2);
-                system("cls");
-                pilihFilm(); // Panggil fungsi untuk memilih film
+
+                // pilihFilm(); // Panggil fungsi untuk memilih film
+                pilihFilm();
+
             } 
             // Pilihan sign up
             else if (((*A1).pilih) == 2) {
@@ -94,14 +113,7 @@ int login(akun *A1) {
                 signUp(A1);
 
                 // Konfirmasi sign up
-                isValid = !isValid;
-                system("cls");
-                printf("========================================\n");
-                printf("    Berhasil! Silakan Login Kembali     \n");
-                printf("========================================\n");
-                delay_seconds(3);
-                system("cls");
-                masuk(A1);
+                isValid = !isValid;   
 
             } 
             // Jika angka tidak valid
