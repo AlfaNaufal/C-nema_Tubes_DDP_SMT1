@@ -6,3 +6,5 @@ typedef struct {
     char username;
     char password;
 } akun;
+
+#endif
