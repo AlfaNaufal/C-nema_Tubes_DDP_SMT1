@@ -1,11 +1,13 @@
 #include<stdio.h>
 #include<time.h>
 #include "login.h"
-
+#include "jadwal.h"
 
 int main(){
     akun A1;
     login(&A1);
+    pilihFilm();
+    pilihJadwal();
 
 
     time_t seconds;
