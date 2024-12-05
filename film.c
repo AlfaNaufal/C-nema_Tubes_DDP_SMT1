@@ -41,6 +41,8 @@ void pilihFilm() {
             // Menangani input yang tidak valid
             while (getchar() != '\n'); // membersihkan buffer
             printf("Pilihan tidak valid, coba lagi!\n");
+            sleep(2);
+            system("cls");
             continue;
         }
 
@@ -50,12 +52,11 @@ void pilihFilm() {
         // Menampilkan film yang dipilih
         printf("\nAnda memilih: %s\n", selectedFilm.judul);
         printf("Genre: %s\n", selectedFilm.genre);
-        printf("Terima kasih telah memilih film di C'Nema!\n");
         
         // Exit setelah memilih film
         break;
     }
-    delay_seconds(3);
+    sleep(2);
     system("cls");
 }
 

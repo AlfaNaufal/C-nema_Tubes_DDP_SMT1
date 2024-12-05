@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+#include <unistd.h>
 #include "kursi.h"
 
 void memilihKursi(kursi *K1);
@@ -38,12 +41,10 @@ void memilihKursi(kursi *K1) {
         printf("\n\n");
 
         printf("Ingin Memesan Berapa Kursi (1-18): ");
-        scanf("%d", &jumlah);
-
-        if (jumlah <= 0 || jumlah > 18) {
+        if (scanf("%d", &jumlah) != 1 || jumlah < 1 || jumlah > 18) {
             printf("Jumlah kursi tidak valid! Harus antara 1 hingga 18.\n");
-            sleep(1);
-            system("cls");
+            while (getchar() != '\n'); // Membersihkan buffer input
+            sleep(2);
             continue;
         }
 
@@ -92,6 +93,7 @@ void memilihKursi(kursi *K1) {
 
         printf("\nApakah Anda yakin dengan pilihan ini? (Y/T): ");
         scanf(" %c", &yakin);
+        while (getchar() != '\n'); // Membersihkan buffer input setelah input Y/T
 
         if (yakin == 'Y' || yakin == 'y') {
             printf("\nPesanan Anda telah dikonfirmasi!\n");
