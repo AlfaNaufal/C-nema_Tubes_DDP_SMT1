@@ -8,10 +8,12 @@ typedef struct {
     char jenisBioskop[20];
 } bioskop;
 
+extern bioskop selectedBioskop;
+
 // Fungsi untuk memilih bioskop
 void pilihBioskop();
 
 // Fungsi untuk mendapatkan bioskop yang telah dipilih
-bioskop getSelectedBioskop();
+// bioskop getSelectedBioskop();
 
 #endif

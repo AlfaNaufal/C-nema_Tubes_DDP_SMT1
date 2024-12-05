@@ -8,7 +8,7 @@ typedef struct {
     char genre[50];  // Genre film
 } film;
 
-extern film selectedFilmGlb;
+extern film selectedFilm;
 
 // Deklarasi fungsi untuk memilih film
 void pilihFilm();

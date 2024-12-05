@@ -17,12 +17,12 @@ film daftarFilm[] = {
 int jumlahFilm = sizeof(daftarFilm) / sizeof(daftarFilm[0]);
 
 // Variabel global untuk menyimpan film yang dipilih
-film selectedFilmGlb;
+film selectedFilm;
 
 // Fungsi untuk memilih film
 void pilihFilm() {
     int pilihan;
-    // film selectedFilmGlb = selectedFilm;
+    // film selectedFilm = selectedFilm;
 
     while (1) {
         // Menampilkan daftar film
@@ -48,7 +48,7 @@ void pilihFilm() {
         }
 
         // Menyimpan pilihan film
-        selectedFilmGlb = daftarFilm[pilihan - 1];
+        selectedFilm = daftarFilm[pilihan - 1];
 
         // Menampilkan film yang dipilih
         printf("\nAnda memilih: %s\n", selectedFilm.judul);

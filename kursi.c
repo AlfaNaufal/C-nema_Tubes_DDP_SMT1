@@ -7,7 +7,7 @@
 #include "film.h"
 #include "jadwal.h"
 
-film selectedFilmGlb;
+film selectedFilm;
 
 char waktuFormatted[50];
 char tanggalDipilih[4][30];
@@ -17,10 +17,13 @@ int validJam;
 int jamPilihan;
 char jamDipilih[10];
 
+kursi K1;
+int jumlah;
+
 void memilihKursi(kursi *K1);
 
 int pilihKursi() {
-    kursi K1;
+    // kursi K1;
 
     memilihKursi(&K1);
 
@@ -28,21 +31,8 @@ int pilihKursi() {
     return 0;
 }
 
-void memilihKursi(kursi *K1) {
-    int jumlah, i, j, valid;
-    static char dipesan[18][3] = {0}; // Kursi yang sudah dipesan
-    static int totalDipesan = 0;      // Jumlah kursi yang sudah dipesan
-    char cek[18][3] = {
-        "A1", "A2", "A3", "A4", "A5", "A6",
-        "B1", "B2", "B3", "B4", "B5", "B6",
-        "C1", "C2", "C3", "C4", "C5", "C6"
-    };
-    char yakin;
-
-    while (1) {
-
-        detail3(waktuFormatted, selectedFilmGlb, tanggalDipilih, tanggalPilihan, jamDipilih);
-
+void tampilKursi(){
+        
         printf("\nSilakan Untuk Memilih Kursi\n");
         printf("______________________________________________________________\n");
         printf("                            Screen                            \n");
@@ -55,13 +45,41 @@ void memilihKursi(kursi *K1) {
         printf("[C1]       [C2]       [C3]       [C4]       [C5]       [C6]\n");
         printf("\n\n");
 
+}
+
+void memilihKursi(kursi *K1) {
+    int i, j, valid;
+    static char dipesan[18][3] = {0}; // Kursi yang sudah dipesan
+    static int totalDipesan = 0;      // Jumlah kursi yang sudah dipesan
+    char cek[18][3] = {
+        "A1", "A2", "A3", "A4", "A5", "A6",
+        "B1", "B2", "B3", "B4", "B5", "B6",
+        "C1", "C2", "C3", "C4", "C5", "C6"
+    };
+    char yakin;
+
+    while (1) {
+
+        // Menampilkan detail bagian ke 4
+        detail4(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih);
+
+
         printf("Ingin Memesan Berapa Kursi (1-18): ");
         if (scanf("%d", &jumlah) != 1 || jumlah < 1 || jumlah > 18) {
             printf("Jumlah kursi tidak valid! Harus antara 1 hingga 18.\n");
             while (getchar() != '\n'); // Membersihkan buffer input
             sleep(2);
+            system("cls");
             continue;
         }
+        
+        system("cls");
+
+        // Menampilkan detail bagian ke 4
+        detail4(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih);
+        
+        //Menampilkan layout kursi
+        tampilKursi();
 
         printf("\nSilahkan Memilih Kursi (contoh: A1, B3):\n");
         for (i = 0; i < jumlah; i++) {
@@ -84,12 +102,18 @@ void memilihKursi(kursi *K1) {
                     if (strcmp(K1->K[i], dipesan[j]) == 0) {
                         valid = 0;
                         printf("Kursi %s sudah dipesan. Pilih kursi lain.\n", K1->K[i]);
+                        sleep(2);
+                        system("cls");
+                        tampilKursi();
                         break;
                     }
                 }
 
                 if (!valid) {
                     printf("Kursi tidak valid atau sudah dipesan. Ulangi input.\n");
+                    sleep(2);
+                    system("cls");
+                    tampilKursi();
                 }
             }
 
@@ -101,6 +125,16 @@ void memilihKursi(kursi *K1) {
         for (i = 0; i < jumlah; i++) {
             printf("%s ", K1->K[i]);
         }
+        
+        sleep(2);
+        system("cls");
+
+        detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, K1, jumlah);
+        
+        // printf("\nKursi yang Anda pilih:\n");
+        // for (i = 0; i < jumlah; i++) {
+        //     printf("%s ", K1->K[i]);
+        // }
 
         K1->harga = jumlah * 30000;
         printf("\nHarga per Tiket: 30000");

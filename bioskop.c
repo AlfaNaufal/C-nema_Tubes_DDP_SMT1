@@ -2,6 +2,8 @@
 #include <stdbool.h>
 #include <string.h>
 #include "bioskop.h"
+#include "film.h"
+#include "film.h"
 
 // Daftar bioskop yang tersedia
 bioskop daftarBioskop[] = {
@@ -23,10 +25,15 @@ void pilihBioskop() {
     int pilihan;
 
     while (1) {
+
+        // Menampilkan detail bagian ke 1
+        detail1(selectedFilm);
+        
         // Menampilkan daftar bioskop
-        printf("========================================\n");
-        printf("            Daftar Bioskop C'Nema       \n");
-        printf("========================================\n");
+        // printf("\n========================================\n");
+        printf("Daftar Bioskop C'Nema       \n");
+        printf("Pilih lokasi bioskop:       \n");
+        // printf("========================================\n");
         
         for (int i = 0; i < jumlahBioskop; i++) {
             printf("%d. %s - %s\n", daftarBioskop[i].pilih, daftarBioskop[i].namaMall, daftarBioskop[i].jenisBioskop);
@@ -60,6 +67,6 @@ void pilihBioskop() {
 }
 
 // Fungsi untuk mendapatkan bioskop yang dipilih
-bioskop getSelectedBioskop() {
-    return selectedBioskop;
-}
+// bioskop getSelectedBioskop() {
+//     return selectedBioskop;
+// }
