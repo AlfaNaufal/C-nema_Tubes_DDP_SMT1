@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <time.h>
+#include <stdbool.h>
 #include "film.h"
 
 // Fungsi untuk memilih jadwal
@@ -46,52 +48,64 @@ void pilihJadwal() {
         return;
     }
 
-    // Menampilkan tanggal yang dipilih
-    printf("\nAnda memilih tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
+    while(true){
+        // Menampilkan tanggal yang dipilih
+        printf("\nAnda memilih tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
 
-    // Menampilkan jam yang tersedia
-    printf("\nPilih jam untuk film ini:\n");
+        // Menampilkan jam yang tersedia
+        printf("\nPilih jam untuk film ini:\n");
 
-    // Jadwal jam yang tersedia
-    char jadwalJam[][10] = {"10:00 AM", "01:00 PM", "04:00 PM", "07:00 PM", "10:00 PM"};
-    int jamJadwal[] = {10, 13, 16, 19, 22}; // Jam dalam format 24 jam untuk perbandingan
+        // Jadwal jam yang tersedia
+        char jadwalJam[][10] = {"10:00 AM", "01:00 PM", "04:00 PM", "07:00 PM", "10:00 PM"};
+        int jamJadwal[] = {10, 13, 16, 19, 22}; // Jam dalam format 24 jam untuk perbandingan
 
-    for (int i = 0; i < 5; i++) {
-        // Jika tanggal yang dipilih adalah hari ini, bandingkan jam
-        if (tanggalPilihan == 1 && jamJadwal[i] <= waktuSekarang.tm_hour) {
-            printf("%d. %s (Sudah Lewat)\n", i + 1, jadwalJam[i]);
-        } else {
-            printf("%d. %s\n", i + 1, jadwalJam[i]);
+        for (int i = 0; i < 5; i++) {
+            // Jika tanggal yang dipilih adalah hari ini, bandingkan jam
+            if (tanggalPilihan == 1 && jamJadwal[i] <= waktuSekarang.tm_hour) {
+                printf("%d. %s (Sudah Lewat)\n", i + 1, jadwalJam[i]);
+            } else {
+                printf("%d. %s\n", i + 1, jadwalJam[i]);
+            }
+        }
+        printf("----------------------------------------\n");
+
+
+
+
+        // Membaca pilihan jam
+        int jamPilihan;
+        printf("Masukkan nomor jam yang Anda pilih: ");
+        if (scanf("%d", &jamPilihan) != 1 || jamPilihan < 1 || jamPilihan > 5) {
+            system("cls");
+            printf("==============================\n");
+            printf("Pilihan jam tidak valid!\n");
+            printf("==============================\n");
+            sleep(2);
+            system("cls");
+        }else if (tanggalPilihan == 1 && jamJadwal[jamPilihan - 1] <= waktuSekarang.tm_hour) { // Validasi pilihan jam
+            system("cls");
+            printf("=====================================================================\n");
+            printf("Jam tersebut sudah lewat! Silakan pilih jam yang masih tersedia.\n");
+            printf("=====================================================================\n");
+            sleep(2);
+            system("cls");
+        }else{
+
+            // Menampilkan jadwal akhir yang dipilih
+            printf("\n\n========================================\n");
+            printf("        Jadwal Film yang Dipilih        \n");
+            printf("========================================\n");
+            printf("Waktu Saat Ini: %s\n", waktuFormatted);
+            printf("Film   : %s\n", selectedFilm.judul);
+            printf("Genre  : %s\n", selectedFilm.genre);
+            printf("Tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
+            printf("Jam    : %s\n", jadwalJam[jamPilihan - 1]);
+            printf("========================================\n");
+            printf("Terima kasih telah memesan di C'Nema!\n");
+
+            delay_seconds(2);
+            system("cls");
+            break;
         }
     }
-    printf("----------------------------------------\n");
-
-    // Membaca pilihan jam
-    int jamPilihan;
-    printf("Masukkan nomor jam yang Anda pilih: ");
-    if (scanf("%d", &jamPilihan) != 1 || jamPilihan < 1 || jamPilihan > 5) {
-        printf("Pilihan jam tidak valid!\n");
-        return;
-    }
-
-    // Validasi pilihan jam
-    if (tanggalPilihan == 1 && jamJadwal[jamPilihan - 1] <= waktuSekarang.tm_hour) {
-        printf("Jam tersebut sudah lewat! Silakan pilih jam yang masih tersedia.\n");
-        return;
-    }
-
-    // Menampilkan jadwal akhir yang dipilih
-    printf("\n\n========================================\n");
-    printf("        Jadwal Film yang Dipilih        \n");
-    printf("========================================\n");
-    printf("Waktu Saat Ini: %s\n", waktuFormatted);
-    printf("Film   : %s\n", selectedFilm.judul);
-    printf("Genre  : %s\n", selectedFilm.genre);
-    printf("Tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
-    printf("Jam    : %s\n", jadwalJam[jamPilihan - 1]);
-    printf("========================================\n");
-    printf("Terima kasih telah memesan di C'Nema!\n");
-
-    delay_seconds(2);
-    system("cls");
 }
