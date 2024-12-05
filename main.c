@@ -4,6 +4,8 @@
 #include "jadwal.h"
 #include "film.h"
 #include "kursi.h"
+#include "bioskop.h"
+
 
 int main(){
 
@@ -11,6 +13,7 @@ int main(){
     
     login(&A1);
     pilihFilm();
+    pilihBioskop();
     pilihJadwal();
     pilihKursi();
 
