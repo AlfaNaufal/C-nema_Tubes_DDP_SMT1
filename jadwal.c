@@ -1,34 +1,37 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <time.h>
-#include <unistd.h>
 #include "film.h"
+#include "detail.h"
+
+    // Mengambil film yang dipilih dari file film.c
+    film selectedFilmGlb;
+    char waktuFormatted[50];
+    char tanggalDipilih[4][30];
+    int tanggalPilihan;
+
+    int validJam;
+    int jamPilihan;
+    char jamDipilih[10];
+
 
 // Fungsi untuk memilih jadwal
 void pilihJadwal() {
-    // Mengambil film yang dipilih dari file film.c
-    film selectedFilm = getSelectedFilm();
+    
 
     // Mendapatkan waktu saat ini
     time_t t = time(NULL);
     struct tm waktuSekarang = *localtime(&t);
 
     // Format waktu sekarang
-    char waktuFormatted[50];
+    // char waktuFormatted[50];
     strftime(waktuFormatted, sizeof(waktuFormatted), "%H:%M:%S, %d %B %Y", &waktuSekarang);
 
-    // Menampilkan waktu sekarang, film, dan genre
-    printf("========================================\n");
-    printf("        Jadwal Film C'Nema             \n");
-    printf("========================================\n");
-    printf("Waktu Saat Ini: %s\n\n", waktuFormatted);
-    printf("Film yang Anda pilih: %s\n", selectedFilm.judul);
-    printf("Genre: %s\n", selectedFilm.genre);
-    printf("========================================\n");
+    detail1(waktuFormatted, selectedFilmGlb);
 
     // Menampilkan tanggal dari hari ini hingga 3 hari ke depan
     printf("Pilih tanggal untuk film ini:\n");
-    char tanggalDipilih[4][30]; // Untuk menyimpan tanggal-tanggal yang tersedia
+    // char tanggalDipilih[4][30]; // Untuk menyimpan tanggal-tanggal yang tersedia
     for (int i = 0; i < 4; i++) {
         struct tm temp = waktuSekarang;
         temp.tm_mday += i; // Menambahkan i hari ke tanggal hari ini
@@ -41,7 +44,7 @@ void pilihJadwal() {
     printf("----------------------------------------\n");
 
     // Membaca pilihan tanggal
-    int tanggalPilihan;
+    // int tanggalPilihan;
     while (1) {
         printf("Masukkan nomor tanggal yang Anda pilih: ");
         if (scanf("%d", &tanggalPilihan) != 1 || tanggalPilihan < 1 || tanggalPilihan > 4) {
@@ -58,18 +61,13 @@ void pilihJadwal() {
     system("cls");
 
     // Menampilkan jam yang tersedia
-    int validJam;
-    int jamPilihan;
-    char jamDipilih[10];
+    // int validJam;
+    // int jamPilihan;
+    // char jamDipilih[10];
     do {
-        printf("\n========================================\n");
-        printf("        Jadwal Film yang Dipilih        \n");
-        printf("========================================\n");
-        printf("Waktu Saat Ini: %s\n", waktuFormatted);
-        printf("Film   : %s\n", selectedFilm.judul);
-        printf("Genre  : %s\n", selectedFilm.genre);
-        printf("Tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
-        printf("========================================\n");
+
+        // header(2);
+        detail2(waktuFormatted, selectedFilmGlb, tanggalDipilih, tanggalPilihan);
         printf("\nPilih jam untuk film ini:\n");
 
         // Jadwal jam yang tersedia
@@ -105,14 +103,7 @@ void pilihJadwal() {
     } while (!validJam);
     system("cls");
 
-    // Menampilkan jadwal yang dipilih
-    printf("\n========================================\n");
-        printf("        Jadwal Film yang Dipilih        \n");
-        printf("========================================\n");
-        printf("Waktu Saat Ini: %s\n", waktuFormatted);
-        printf("Film   : %s\n", selectedFilm.judul);
-        printf("Genre  : %s\n", selectedFilm.genre);
-        printf("Tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
-        printf("Jam    : %s\n", jamDipilih);
-        printf("========================================\n");
+    detail3(waktuFormatted, selectedFilmGlb, tanggalDipilih, tanggalPilihan, jamDipilih);
+    sleep(2);
+    system("cls");
 }

@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 #include "kursi.h"
+#include "film.h"
+#include "jadwal.h"
+
+film selectedFilmGlb;
+
+char waktuFormatted[50];
+char tanggalDipilih[4][30];
+int tanggalPilihan;
+
+int validJam;
+int jamPilihan;
+char jamDipilih[10];
 
 void memilihKursi(kursi *K1);
 
@@ -25,6 +37,9 @@ void memilihKursi(kursi *K1) {
     char yakin;
 
     while (1) {
+
+        detail3(waktuFormatted, selectedFilmGlb, tanggalDipilih, tanggalPilihan, jamDipilih);
+
         printf("\nSilakan Untuk Memilih Kursi\n");
         printf("______________________________________________________________\n");
         printf("                            Screen                            \n");
