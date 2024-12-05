@@ -21,7 +21,7 @@ film selectedFilm;
 
 // Fungsi untuk memilih film
 void pilihFilm() {
-    int pilihan;
+    int pilihan,i;
 
     while (1) {
         // Menampilkan daftar film
@@ -29,7 +29,7 @@ void pilihFilm() {
         printf("            Daftar Film C'Nema         \n");
         printf("========================================\n");
         
-        for (int i = 0; i < jumlahFilm; i++) {
+        for ( i = 0; i < jumlahFilm; i++) {
             printf("%d. %s - %s\n", daftarFilm[i].pilih, daftarFilm[i].judul, daftarFilm[i].genre);
         }
         

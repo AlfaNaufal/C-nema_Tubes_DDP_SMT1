@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <time.h>
 #include "film.h"
+#include "jadwal.h"
 
 // Fungsi untuk memilih jadwal
 void pilihJadwal() {
+    int i;
     // Mengambil film yang dipilih dari file film.c
     film selectedFilm = getSelectedFilm();
 
@@ -26,8 +28,9 @@ void pilihJadwal() {
 
     // Menampilkan tanggal dari hari ini hingga 3 hari ke depan
     printf("Pilih tanggal untuk film ini:\n");
+    
     char tanggalDipilih[4][30]; // Untuk menyimpan tanggal-tanggal yang tersedia
-    for (int i = 0; i < 4; i++) {
+    for ( i = 0; i < 4; i++) {
         struct tm temp = waktuSekarang;
         temp.tm_mday += i; // Menambahkan i hari ke tanggal hari ini
         mktime(&temp);     // Menyesuaikan overflow waktu jika ada
@@ -56,7 +59,7 @@ void pilihJadwal() {
     char jadwalJam[][10] = {"10:00 AM", "01:00 PM", "04:00 PM", "07:00 PM", "10:00 PM"};
     int jamJadwal[] = {10, 13, 16, 19, 22}; // Jam dalam format 24 jam untuk perbandingan
 
-    for (int i = 0; i < 5; i++) {
+    for ( i = 0; i < 5; i++) {
         // Jika tanggal yang dipilih adalah hari ini, bandingkan jam
         if (tanggalPilihan == 1 && jamJadwal[i] <= waktuSekarang.tm_hour) {
             printf("%d. %s (Sudah Lewat)\n", i + 1, jadwalJam[i]);
