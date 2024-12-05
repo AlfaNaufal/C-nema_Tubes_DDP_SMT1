@@ -25,15 +25,6 @@ void memilihKursi(kursi *K1) {
     char yakin;
 
     while (1) {
-        printf("\n========================================\n");
-        printf("        Jadwal Film yang Dipilih        \n");
-        printf("========================================\n");
-        printf("Waktu Saat Ini: %s\n", waktuFormatted);
-        printf("Film   : %s\n", selectedFilm.judul);
-        printf("Genre  : %s\n", selectedFilm.genre);
-        printf("Tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
-        printf("Jam    : %s\n", jamDipilih);
-        printf("========================================\n");
         printf("\nSilakan Untuk Memilih Kursi\n");
         printf("______________________________________________________________\n");
         printf("                            Screen                            \n");

@@ -105,4 +105,13 @@ void pilihJadwal() {
     system("cls");
 
     // Menampilkan jadwal yang dipilih
+    printf("\n========================================\n");
+        printf("        Jadwal Film yang Dipilih        \n");
+        printf("========================================\n");
+        printf("Waktu Saat Ini: %s\n", waktuFormatted);
+        printf("Film   : %s\n", selectedFilm.judul);
+        printf("Genre  : %s\n", selectedFilm.genre);
+        printf("Tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
+        printf("Jam    : %s\n", jamDipilih);
+        printf("========================================\n");
 }
