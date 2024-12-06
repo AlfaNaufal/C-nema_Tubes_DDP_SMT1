@@ -7,18 +7,8 @@
 #include "film.h"
 #include "jadwal.h"
 
-film selectedFilm;
-
-char waktuFormatted[50];
-char tanggalDipilih[4][30];
-int tanggalPilihan;
-
-int validJam;
-int jamPilihan;
-char jamDipilih[10];
-
 kursi K1;
-int jumlah;
+
 
 void memilihKursi(kursi *K1);
 
@@ -28,9 +18,13 @@ int pilihKursi() {
     memilihKursi(&K1);
 
     printf("\nTerima kasih telah memesan kursi!\n");
+    sleep(2);
+    system("cls");
     return 0;
 }
 
+
+//Fungsi untuk menampilkan layout kursi-Buka
 void tampilKursi(){
         
         printf("\nSilakan Untuk Memilih Kursi\n");
@@ -46,7 +40,10 @@ void tampilKursi(){
         printf("\n\n");
 
 }
+//Fungsi untuk menampilkan layout kursi-Tutup
 
+
+//Fungsi untuk memilih kursi-Buka
 void memilihKursi(kursi *K1) {
     int i, j, valid;
     static char dipesan[18][3] = {0}; // Kursi yang sudah dipesan
@@ -65,7 +62,7 @@ void memilihKursi(kursi *K1) {
 
 
         printf("Ingin Memesan Berapa Kursi (1-18): ");
-        if (scanf("%d", &jumlah) != 1 || jumlah < 1 || jumlah > 18) {
+        if (scanf("%d", &K1->jumlah) != 1 || K1->jumlah < 1 || K1->jumlah > 18) {
             printf("Jumlah kursi tidak valid! Harus antara 1 hingga 18.\n");
             while (getchar() != '\n'); // Membersihkan buffer input
             sleep(2);
@@ -82,7 +79,7 @@ void memilihKursi(kursi *K1) {
         tampilKursi();
 
         printf("\nSilahkan Memilih Kursi (contoh: A1, B3):\n");
-        for (i = 0; i < jumlah; i++) {
+        for (i = 0; i < K1->jumlah; i++) {
             valid = 0;
 
             while (!valid) {
@@ -124,18 +121,18 @@ void memilihKursi(kursi *K1) {
         }
 
         printf("\nKursi yang Anda pilih:\n");
-        for (i = 0; i < jumlah; i++) {
+        for (i = 0; i < K1->jumlah; i++) {
             printf("%s ", K1->K[i]);
         }
         
         sleep(2);
         system("cls");
 
-        detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, K1, jumlah);
+        detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, K1, K1->jumlah);
 
-        K1->harga = jumlah * 30000;
+        K1->harga = K1->jumlah * 30000;
         printf("\nHarga per Tiket: Rp.30000");
-        printf("\nTotal Tiket yang di Pesan: %d", jumlah);
+        printf("\nTotal Tiket yang di Pesan: %d", K1->jumlah);
         printf("\nHarga total yang harus dibayar: Rp.%d\n", K1->harga);
 
         printf("\nApakah Anda yakin dengan pilihan ini? (Y/T): ");
@@ -151,7 +148,7 @@ void memilihKursi(kursi *K1) {
             system("cls");
             continue;
         } else {
-            printf("\nInput tidak valid! Silakan ulangi proses.\n");
+            printf("\nInput tidak valid! Silakan ulangi pemilihan.\n");
         }
     }
 }

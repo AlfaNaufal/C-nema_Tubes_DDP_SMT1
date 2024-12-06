@@ -5,6 +5,7 @@
 #include "film.h"
 #include "kursi.h"
 #include "bioskop.h"
+#include "pembayaran.h"
 
 
 int main(){
@@ -16,6 +17,7 @@ int main(){
     pilihBioskop();
     pilihJadwal();
     pilihKursi();
+    pembayaran(&K1);
 
     
     return 0;
