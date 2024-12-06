@@ -113,7 +113,9 @@ void memilihKursi(kursi *K1) {
                     printf("Kursi tidak valid atau sudah dipesan. Ulangi input.\n");
                     sleep(2);
                     system("cls");
+                    detail4(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih);
                     tampilKursi();
+                    
                 }
             }
 
@@ -137,7 +139,8 @@ void memilihKursi(kursi *K1) {
         // }
 
         K1->harga = jumlah * 30000;
-        printf("\nHarga per Tiket: 30000");
+        printf("\nHarga per Tiket: Rp.30000");
+        printf("\nTotal Tiket yang di Pesan: %d", jumlah);
         printf("\nHarga total yang harus dibayar: Rp.%d\n", K1->harga);
 
         printf("\nApakah Anda yakin dengan pilihan ini? (Y/T): ");
