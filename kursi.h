@@ -6,6 +6,9 @@ typedef struct {
     int harga;
 } kursi;
 
+extern kursi K1;
+extern int jumlah;
+
 int pilihKursi(); // Deklarasi fungsi utama untuk dipanggil dari main.c
 
 #endif
