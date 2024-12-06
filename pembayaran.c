@@ -5,15 +5,11 @@
 #include "film.h"
 #include "jadwal.h"
 
-// extern film selectedFilm;
+float hitungTotalHarga(){
 
-// char waktuFormatted[50];
-// char tanggalDipilih[4][30];
-// int tanggalPilihan;
+    
 
-// int validJam;
-// int jamPilihan;
-// char jamDipilih[10];
+}
 
 void pembayaran(){
     // int a;

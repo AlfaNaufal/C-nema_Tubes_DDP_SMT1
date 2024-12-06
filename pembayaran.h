@@ -28,7 +28,7 @@ typedef struct{
 
 
 void pembayaran();
-// float hitungtotalHarga();
+float hitungtotalHarga();
  
 
 
