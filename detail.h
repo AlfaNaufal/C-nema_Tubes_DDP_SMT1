@@ -6,16 +6,6 @@
 #include "bioskop.h"
 #include "kursi.h"
 
-typedef struct{
-    
-    char waktuFormatted[50];
-    film selectedFilm;
-    char tanggalDipilih[4][30];
-    int tanggalPilihan;
-    char jamPilih[10];
-
-} detailParams;
-
 void detail1(film selectedFilm);
 void detail2(const char *waktuFormatted, film selectedFilm, bioskop selectedBioskop);
 void detail3(const char *waktuFormatted, film selectedFilm, bioskop selectedBioskop, char tanggalDipilih[][30], int tanggalPilihan );

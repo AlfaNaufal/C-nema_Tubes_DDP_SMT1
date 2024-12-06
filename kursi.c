@@ -130,11 +130,6 @@ void memilihKursi(kursi *K1) {
         system("cls");
 
         detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, K1, jumlah);
-        
-        // printf("\nKursi yang Anda pilih:\n");
-        // for (i = 0; i < jumlah; i++) {
-        //     printf("%s ", K1->K[i]);
-        // }
 
         K1->harga = jumlah * 30000;
         printf("\nHarga per Tiket: 30000");
