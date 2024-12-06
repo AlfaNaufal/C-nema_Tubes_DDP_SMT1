@@ -6,6 +6,13 @@
 // Fungsi untuk memilih jadwal
 void pilihJadwal() {
     int i;
+    // Jadwal jam yang tersedia
+    char jadwalJam[][10] = {"10:00 AM", "01:00 PM", "04:00 PM", "07:00 PM", "10:00 PM"};
+    int jamJadwal[] = {10, 13, 16, 19, 22}; // Jam dalam format 24 jam untuk perbandingan
+    char tanggalDipilih[4][30]; // Untuk menyimpan tanggal-tanggal yang tersedia
+    // Format waktu sekarang
+    char waktuFormatted[50];
+    
     // Mengambil film yang dipilih dari file film.c
     film selectedFilm = getSelectedFilm();
 
@@ -13,8 +20,6 @@ void pilihJadwal() {
     time_t t = time(NULL);
     struct tm waktuSekarang = *localtime(&t);
 
-    // Format waktu sekarang
-    char waktuFormatted[50];
     strftime(waktuFormatted, sizeof(waktuFormatted), "%H:%M:%S, %d %B %Y", &waktuSekarang);
 
     // Menampilkan waktu sekarang, film, dan genre
@@ -29,7 +34,6 @@ void pilihJadwal() {
     // Menampilkan tanggal dari hari ini hingga 3 hari ke depan
     printf("Pilih tanggal untuk film ini:\n");
     
-    char tanggalDipilih[4][30]; // Untuk menyimpan tanggal-tanggal yang tersedia
     for ( i = 0; i < 4; i++) {
         struct tm temp = waktuSekarang;
         temp.tm_mday += i; // Menambahkan i hari ke tanggal hari ini
@@ -55,9 +59,6 @@ void pilihJadwal() {
     // Menampilkan jam yang tersedia
     printf("\nPilih jam untuk film ini:\n");
 
-    // Jadwal jam yang tersedia
-    char jadwalJam[][10] = {"10:00 AM", "01:00 PM", "04:00 PM", "07:00 PM", "10:00 PM"};
-    int jamJadwal[] = {10, 13, 16, 19, 22}; // Jam dalam format 24 jam untuk perbandingan
 
     for ( i = 0; i < 5; i++) {
         // Jika tanggal yang dipilih adalah hari ini, bandingkan jam
