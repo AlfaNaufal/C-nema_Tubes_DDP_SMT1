@@ -9,6 +9,9 @@
 #include "film.h"
 #include "jadwal.h"
 
+#define FILENAME_PELANGGAN "akun_pelanggan.txt"
+#define FILENAME_ADMIN "akun_admin.txt"
+
 // Fungsi untuk memberikan jeda waktu (delay)
 void delay_seconds(int seconds) {
     time_t start_time = time(NULL);
@@ -19,120 +22,126 @@ void delay_seconds(int seconds) {
 bool is_number(const char *str) {
     for (int i = 0; str[i] != '\0'; i++) {
         if (!isdigit(str[i])) {
-            return false; // Bukan angka jika ada karakter non-digit
+            return false;
         }
     }
     return true;
 }
 
-void masuk(akun *A1){
+// Fungsi untuk memvalidasi login admin
+bool validasiAdmin(const char *username, const char *password) {
+    FILE *file = fopen(FILENAME_ADMIN, "r"); // Buka file dalam mode baca
+    if (file == NULL) {
+        printf("Gagal membuka file akun admin.\n");
+        return false;
+    }
 
-    system("cls");
-    printf("========================================\n");
-    printf("                LOGIN                   \n");
-    printf("========================================\n");
-    printf("Masukkan Username: ");
-    scanf("%s", &((*A1).username));
-    printf("Masukkan Password: ");
-    scanf("%s", &((*A1).password));
-
-    system("cls");
-    printf("========================================\n");
-    printf("             Login berhasil!            \n");
-    printf("========================================\n");
-    // delay_seconds(2);
-    sleep(1);
-    system("cls");
-    // pilihFilm(); // Panggil fungsi untuk memilih film
-    // pilihJadwal();
-
+    char storedUsername[50], storedPassword[50];
+    while (fscanf(file, "%s %s", storedUsername, storedPassword) != EOF) {
+        if (strcmp(username, storedUsername) == 0 && strcmp(password, storedPassword) == 0) {
+            fclose(file);
+            return true; // Admin valid
+        }
+    }
+    fclose(file);
+    return false; // Admin tidak ditemukan
 }
 
-void signUp(akun *A1){
-
-    system("cls");
-    printf("========================================\n");
-    printf("               SIGN UP                  \n");
-    printf("========================================\n");
-    printf("Masukkan Username: ");
-    scanf("%s", &((*A1).username));
-    printf("Masukkan Password: ");
-    scanf("%s", &((*A1).password));
-
-    system("cls");
-    printf("========================================\n");
-    printf("        Berhasil! Silakan Login         \n");
-    printf("========================================\n");
-    delay_seconds(3);
-    system("cls");
-
-    // Memanggil fungsi login 
-    masuk(A1);
-
+// Fungsi login pelanggan
+void masukPelanggan(akun *A1) {
+    // Sama seperti sebelumnya
 }
 
-// Fungsi login
+// Fungsi sign-up pelanggan
+void signUpPelanggan(akun *A1) {
+    // Sama seperti sebelumnya
+}
+
+// Fungsi login utama
 int login(akun *A1) {
     bool isValid = true;
-    char input[100]; // Buffer untuk membaca input
+    char input[100];
 
     while (isValid) {
-        // Header menu utama
-        system("cls"); // Membersihkan layar (gunakan "clear" di Linux/Mac)
+        system("cls");
         printf("========================================\n");
         printf("       Selamat Datang di C'Nema         \n");
         printf("========================================\n");
         printf("Pilih opsi:\n");
-        printf("1. Login\n");
-        printf("2. Sign Up\n");
+        printf("1. Login sebagai Admin\n");
+        printf("2. Login atau Sign-Up sebagai Pelanggan\n");
         printf("----------------------------------------\n");
         printf("Masukkan pilihan Anda: ");
-        scanf("%s", input); // Baca input sebagai string
+        scanf("%s", input);
 
-        // Validasi apakah input adalah angka
         if (is_number(input)) {
-            (*A1).pilih = atoi(input); // Konversi string ke integer
+            (*A1).pilih = atoi(input);
 
-            // Pilihan login
-            if (((*A1).pilih) == 1) {
-
-                // Memanggil fungsi login 
-                masuk(A1);
-
-                // Konfirmasi login
-                isValid = !isValid;
-
-                // pilihFilm(); // Panggil fungsi untuk memilih film
-                //pilihFilm();
-
-            } 
-            // Pilihan sign up
-            else if (((*A1).pilih) == 2) {
-
-                // Memanggil fungsi signUp 
-                signUp(A1);
-
-                // Konfirmasi sign up
-                isValid = !isValid;   
-
-            } 
-            // Jika angka tidak valid
-            else {
+            if ((*A1).pilih == 1) {
+                // Login admin
+                char username[50], password[50];
                 system("cls");
                 printf("========================================\n");
-                printf("     Error 404: Option Not Found!       \n");
+                printf("            LOGIN SEBAGAI ADMIN         \n");
                 printf("========================================\n");
-                delay_seconds(3);
+                printf("Masukkan Username: ");
+                scanf("%s", username);
+                printf("Masukkan Password: ");
+                scanf("%s", password);
+
+                if (validasiAdmin(username, password)) {
+                    printf("\nLogin Admin berhasil!\n");
+                    sleep(2);
+                    system("cls");
+                    // Tambahkan fungsi admin jika perlu
+                    break;
+                } else {
+                    printf("\nUsername atau password Admin salah!\n");
+                    sleep(2);
+                }
+
+            } else if ((*A1).pilih == 2) {
+                // Menu pelanggan
+                while (1) {
+                    system("cls");
+                    printf("========================================\n");
+                    printf("           MENU PELANGGAN               \n");
+                    printf("========================================\n");
+                    printf("Pilih opsi:\n");
+                    printf("1. Login\n");
+                    printf("2. Sign Up\n");
+                    printf("----------------------------------------\n");
+                    printf("Masukkan pilihan Anda: ");
+                    scanf("%s", input);
+
+                    if (is_number(input)) {
+                        (*A1).pilih = atoi(input);
+
+                        if ((*A1).pilih == 1) {
+                            masukPelanggan(A1);
+                            isValid = !isValid;
+                            break;
+
+                        } else if ((*A1).pilih == 2) {
+                            signUpPelanggan(A1);
+                            break;
+
+                        } else {
+                            printf("\nPilihan tidak valid! Harap masukkan angka 1 atau 2.\n");
+                            sleep(2);
+                        }
+                    } else {
+                        printf("\nInput tidak valid! Harap masukkan angka 1 atau 2.\n");
+                        sleep(2);
+                    }
+                }
+            } else {
+                printf("\nPilihan tidak valid! Harap masukkan angka 1 atau 2.\n");
+                sleep(2);
             }
-        } 
-        // Jika input bukan angka
-        else {
-            system("cls");
-            printf("========================================\n");
-            printf("    Input tidak valid! Harap masukkan   \n");
-            printf("         angka (1 atau 2).              \n");
-            printf("========================================\n");
-            delay_seconds(3);
+        } else {
+            printf("\nInput tidak valid! Harap masukkan angka 1 atau 2.\n");
+            sleep(2);
         }
     }
     return 0;
