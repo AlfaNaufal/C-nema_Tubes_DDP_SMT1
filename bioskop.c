@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "bioskop.h"
 #include "film.h"
+#include "menu.h"
 #include "detail.h"
 
 // Daftar bioskop yang tersedia
@@ -23,6 +24,7 @@ bioskop selectedBioskop;
 
 // Fungsi untuk memilih bioskop
 void pilihBioskop() {
+    menu state;
     int pilihan;
 
     while (1) {
@@ -54,6 +56,14 @@ void pilihBioskop() {
             continue;
         }
 
+        if(pilihan == 0){
+            system("cls");
+            printf("Loading....");
+            state.pilihan = 1;
+            sleep(1);
+            system("cls");
+            break;
+        }
         // Menyimpan pilihan bioskop
         selectedBioskop = daftarBioskop[pilihan - 1];
 

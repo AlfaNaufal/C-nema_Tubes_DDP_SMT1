@@ -6,11 +6,14 @@
 #include <ctype.h>
 #include <string.h>
 #include "login.h"
+#include "menu.h"
 #include "film.h"
 #include "jadwal.h"
 
 #define FILENAME_PELANGGAN "akun_pelanggan.txt"
 #define FILENAME_ADMIN "akun_admin.txt"
+
+menu state;
 
 // Fungsi untuk memberikan jeda waktu (delay)
 void delay_seconds(int seconds) {
@@ -90,7 +93,9 @@ void masukPelanggan(akun *A1) {
         scanf("%s", A1->password);
 
         if (validasiAkun(A1)) {
+            state.pilihan = 1;
             printf("\nLogin berhasil! Selamat datang, %s.\n", A1->username);
+            pilihMenu(&state);
             sleep(2);
             system("cls");
             break;

@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "film.h"
+#include "menu.h"
 
 // Daftar film yang tersedia
 film daftarFilm[] = {
@@ -22,7 +23,8 @@ film selectedFilm;
 
 // Fungsi untuk memilih film
 void pilihFilm() {
-    int pilihan;
+    menu state;
+    int pilih;
     // film selectedFilm = selectedFilm;
 
     while (1) {
@@ -35,12 +37,14 @@ void pilihFilm() {
         for (int i = 0; i < jumlahFilm; i++) {
             printf("%d. %s - %s\n", daftarFilm[i].pilih, daftarFilm[i].judul, daftarFilm[i].genre);
         }
+            printf("0. Kembali\n");
         
         printf("========================================\n");
         printf("Masukkan nomor film yang ingin Anda tonton (1-%d): ", jumlahFilm);
         
+        
         // Memvalidasi input
-        if (scanf("%d", &pilihan) != 1 || pilihan < 1 || pilihan > jumlahFilm) {
+        if (scanf("%d", &pilih) != 1|| pilih < 0 || pilih > jumlahFilm) {
             // Menangani input yang tidak valid
             while (getchar() != '\n'); // membersihkan buffer
             printf("Pilihan tidak valid, coba lagi!\n");
@@ -49,8 +53,15 @@ void pilihFilm() {
             continue;
         }
 
+
+        if(pilih == 0){
+            state.pilihan = state.pilihan -1;
+
+            pilihMenu(&state);   
+        }
+        
         // Menyimpan pilihan film
-        selectedFilm = daftarFilm[pilihan - 1];
+        selectedFilm = daftarFilm[state.pilihan - 1];
 
         // Menampilkan film yang dipilih
         printf("\nAnda memilih: %s\n", selectedFilm.judul);

@@ -4,6 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 #include "home.h"
+#include "menu.h"
 #include "film.h"          // Untuk memilih film
 #include "jadwal.h"        // Untuk memilih jadwal
 #include "kursi.h"         // Untuk memilih kursi
@@ -28,10 +29,9 @@ void tampilkanHistory() {
 
 // Fungsi utama untuk menampilkan menu utama setelah login
 void tampilkanHome() {
-    int pilihan;
-    int running = 1;
+    menu  state;
 
-    while (running) {
+    while (state.running) {
         system("cls");
         printf("========================================\n");
         printf("        Selamat Datang di C'Nema        \n");
@@ -62,41 +62,10 @@ void tampilkanHome() {
             continue;
         }
 
-        pilihan = atoi(input);
+        state.pilihan = atoi(input);
 
-        switch (pilihan) {
-            case 0:
-                tampilkanHome();         // Melakukan pembayaran
-                break;
-            case 1:
-                // Alur pemesanan film
-                pilihFilm();          // Memilih film
-                pilihBioskop();       // Memilih Bioskop
-                pilihJadwal();        // Memilih jadwal
-                pilihKursi();         // Memilih kursi
-                pembayaran();         // Melakukan pembayaran
-                break;
-            case 2:
-                system("cls"); // Bersihkan layar
-                printf("========================================\n");
-                printf("            Riwayat Pembelian           \n");
-                printf("========================================\n");
-                printf("========================================\n");
-                printf("\nTekan enter untuk kembali ke menu utama...");
-                getchar(); // Tunggu pengguna menekan enter
-                getchar(); // Untuk menangkap karakter enter sebelumnya
-                break;
-            case 3:
-                // Keluar dari program
-                printf("\nTerima kasih telah menggunakan C'Nema!\n");
-                sleep(2);
-                running = 0;
-                system("cls");
-                break;
-            default:
-                printf("\nPilihan tidak valid. Harap masukkan angka 1-3.\n");
-                sleep(2);
-                break;
-        }
+        pilihMenu(&state);
     }
 }
+
+
