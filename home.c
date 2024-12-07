@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 #include "home.h"
 #include "film.h"          // Untuk memilih film
 #include "jadwal.h"        // Untuk memilih jadwal

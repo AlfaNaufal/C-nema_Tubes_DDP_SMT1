@@ -9,6 +9,7 @@
 
 kursi K1;
 
+int jumlah;
 
 void memilihKursi(kursi *K1);
 
@@ -62,7 +63,7 @@ void memilihKursi(kursi *K1) {
 
 
         printf("Ingin Memesan Berapa Kursi (1-18): ");
-        if (scanf("%d", &K1->jumlah) != 1 || K1->jumlah < 1 || K1->jumlah > 18) {
+        if (scanf("%d", &jumlah) != 1 || jumlah < 1 || jumlah > 18) {
             printf("Jumlah kursi tidak valid! Harus antara 1 hingga 18.\n");
             while (getchar() != '\n'); // Membersihkan buffer input
             sleep(2);
@@ -79,7 +80,7 @@ void memilihKursi(kursi *K1) {
         tampilKursi();
 
         printf("\nSilahkan Memilih Kursi (contoh: A1, B3):\n");
-        for (i = 0; i < K1->jumlah; i++) {
+        for (i = 0; i < jumlah; i++) {
             valid = 0;
 
             while (!valid) {
@@ -121,18 +122,18 @@ void memilihKursi(kursi *K1) {
         }
 
         printf("\nKursi yang Anda pilih:\n");
-        for (i = 0; i < K1->jumlah; i++) {
+        for (i = 0; i < jumlah; i++) {
             printf("%s ", K1->K[i]);
         }
         
         sleep(2);
         system("cls");
 
-        detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, K1, K1->jumlah);
+        detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, K1, jumlah);
 
-        K1->harga = K1->jumlah * 30000;
+        K1->harga = jumlah * 30000;
         printf("\nHarga per Tiket: Rp.30000");
-        printf("\nTotal Tiket yang di Pesan: %d", K1->jumlah);
+        printf("\nTotal Tiket yang di Pesan: %d", jumlah);
         printf("\nHarga total yang harus dibayar: Rp.%d\n", K1->harga);
 
         printf("\nApakah Anda yakin dengan pilihan ini? (Y/T): ");
