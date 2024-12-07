@@ -21,7 +21,7 @@ int main(){
     pilihBioskop();
     pilihJadwal();
     pilihKursi();
-    pembayaran();
+    pembayaran(&K1);
 
     
     return 0;

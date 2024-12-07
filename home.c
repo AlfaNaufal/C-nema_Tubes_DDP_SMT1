@@ -2,20 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 #include "home.h"
 #include "film.h"          // Untuk memilih film
 #include "jadwal.h"        // Untuk memilih jadwal
 #include "kursi.h"         // Untuk memilih kursi
 #include "pembayaran.h"    // Untuk melakukan pembayaran
-
-// Variabel eksternal yang digunakan dari modul lain
-extern char waktuFormatted[50];
-extern film selectedFilm;
-extern char tanggalDipilih[4][30];
-extern int tanggalPilihan;
-extern char jamDipilih[10];
-extern int jumlah;
-extern kursi K1;
 
 // Fungsi placeholder untuk history pembelian
 void tampilkanHistory() {
@@ -73,6 +65,9 @@ void tampilkanHome() {
         pilihan = atoi(input);
 
         switch (pilihan) {
+            case 0:
+                tampilkanHome();         // Melakukan pembayaran
+                break;
             case 1:
                 // Alur pemesanan film
                 pilihFilm();          // Memilih film

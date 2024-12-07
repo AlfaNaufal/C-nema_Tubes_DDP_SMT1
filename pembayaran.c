@@ -4,14 +4,7 @@
 #include <string.h>
 #include "pembayaran.h"
 
-// Variabel eksternal untuk data dari modul lain
-extern char waktuFormatted[50];
-extern film selectedFilm;
-extern char tanggalDipilih[4][30];
-extern int tanggalPilihan;
-extern char jamDipilih[10];
-extern int jumlah;
-extern kursi K1;
+
 
 // Saldo awal pelanggan (contoh simulasi)
 int saldoSaatIni = 100000;
@@ -19,20 +12,20 @@ int saldoSaatIni = 100000;
 // Fungsi pembayaran tiket
 void pembayaran() {
     char konfirmasi;
-    int totalBayar = jumlah * 30000;
+    int totalBayar = K1.jumlah * 30000;
 
     while (1) {
         system("cls");
 
         // Tampilkan detail tiket (dengan asumsi fungsi detail5 tersedia)
-        detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, &K1, jumlah);
+        detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, &K1, K1.jumlah);
 
         // Tampilkan informasi pembayaran
         printf("\n========================================\n");
         printf("              INFORMASI PEMBAYARAN              \n");
         printf("========================================\n");
         printf("Harga per Tiket            : Rp. 30000\n");
-        printf("Jumlah Tiket yang dipesan  : %d\n", jumlah);
+        printf("Jumlah Tiket yang dipesan  : %d\n", K1.jumlah);
         printf("Total Bayar                : Rp. %d\n", totalBayar);
         printf("Saldo Saat Ini             : Rp. %d\n", saldoSaatIni);
         printf("========================================\n");

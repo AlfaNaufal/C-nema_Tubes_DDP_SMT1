@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <unistd.h>
 #include "bioskop.h"
 #include "film.h"
-#include "film.h"
+#include "detail.h"
 
 // Daftar bioskop yang tersedia
 bioskop daftarBioskop[] = {
@@ -38,12 +39,13 @@ void pilihBioskop() {
         for (int i = 0; i < jumlahBioskop; i++) {
             printf("%d. %s - %s\n", daftarBioskop[i].pilih, daftarBioskop[i].namaMall, daftarBioskop[i].jenisBioskop);
         }
+        printf("0. Kembali\n");
         
         printf("========================================\n");
         printf("Masukkan nomor bioskop yang ingin Anda pilih (1-%d): ", jumlahBioskop);
         
         // Memvalidasi input
-        if (scanf("%d", &pilihan) != 1 || pilihan < 1 || pilihan > jumlahBioskop) {
+        if (scanf("%d", &pilihan) != 1 || pilihan < 0 || pilihan > jumlahBioskop) {
             // Menangani input yang tidak valid
             while (getchar() != '\n'); // Membersihkan buffer
             printf("Pilihan tidak valid, coba lagi!\n");

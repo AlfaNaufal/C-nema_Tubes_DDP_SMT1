@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
 #include <string.h>
 #include "film.h"
 
@@ -61,8 +62,3 @@ void pilihFilm() {
     sleep(2);
     system("cls");
 }
-
-// Fungsi untuk mendapatkan film yang dipilih
-// film getSelectedFilm() {
-//     return selectedFilm;
-// }
