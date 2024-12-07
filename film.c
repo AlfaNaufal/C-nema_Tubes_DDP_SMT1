@@ -27,6 +27,7 @@ void pilihFilm() {
 
     while (1) {
         // Menampilkan daftar film
+        system("cls");
         printf("========================================\n");
         printf("            Daftar Film C'Nema         \n");
         printf("========================================\n");

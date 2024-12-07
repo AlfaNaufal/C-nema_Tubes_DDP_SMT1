@@ -47,14 +47,79 @@ bool validasiAdmin(const char *username, const char *password) {
     return false; // Admin tidak ditemukan
 }
 
+// Fungsi untuk menyimpan akun pelanggan ke file
+void simpanAkun(akun *A1) {
+    FILE *file = fopen(FILENAME_PELANGGAN, "a"); // Buka file dalam mode append
+    if (file == NULL) {
+        printf("Gagal membuka file untuk menyimpan akun.\n");
+        return;
+    }
+    fprintf(file, "%s %s\n", A1->username, A1->password);
+    fclose(file);
+}
+
+// Fungsi untuk memvalidasi login pelanggan
+bool validasiAkun(akun *A1) {
+    FILE *file = fopen(FILENAME_PELANGGAN, "r"); // Buka file dalam mode baca
+    if (file == NULL) {
+        printf("Gagal membuka file akun pelanggan.\n");
+        return false;
+    }
+
+    char username[50], password[50];
+    while (fscanf(file, "%s %s", username, password) != EOF) {
+        if (strcmp(username, A1->username) == 0 && strcmp(password, A1->password) == 0) {
+            fclose(file);
+            return true; // Akun valid
+        }
+    }
+    fclose(file);
+    return false; // Akun tidak ditemukan
+}
+
 // Fungsi login pelanggan
 void masukPelanggan(akun *A1) {
-    // Sama seperti sebelumnya
+    while (1) {
+        system("cls");
+        printf("========================================\n");
+        printf("        LOGIN SEBAGAI PELANGGAN         \n");
+        printf("========================================\n");
+        printf("Masukkan Username: ");
+        scanf("%s", A1->username);
+        printf("Masukkan Password: ");
+        scanf("%s", A1->password);
+
+        if (validasiAkun(A1)) {
+            printf("\nLogin berhasil! Selamat datang, %s.\n", A1->username);
+            sleep(2);
+            system("cls");
+            break;
+        } else {
+            printf("\nUsername atau password salah! Silakan coba lagi.\n");
+            sleep(2);
+        }
+    }
 }
 
 // Fungsi sign-up pelanggan
 void signUpPelanggan(akun *A1) {
-    // Sama seperti sebelumnya
+    system("cls");
+    printf("========================================\n");
+    printf("           SIGN UP PELANGGAN            \n");
+    printf("========================================\n");
+    printf("Masukkan Username: ");
+    scanf("%s", A1->username);
+    printf("Masukkan Password: ");
+    scanf("%s", A1->password);
+
+    simpanAkun(A1); // Simpan username dan password ke file
+
+    system("cls");
+    printf("========================================\n");
+    printf("        Berhasil! Silakan Login         \n");
+    printf("========================================\n");
+    delay_seconds(3);
+    system("cls");
 }
 
 // Fungsi login utama
@@ -90,10 +155,9 @@ int login(akun *A1) {
                 scanf("%s", password);
 
                 if (validasiAdmin(username, password)) {
-                    printf("\nLogin Admin berhasil!\n");
+                    printf("\nLogin Admin berhasil! Selamat datang, %s.\n", username);
                     sleep(2);
                     system("cls");
-                    // Tambahkan fungsi admin jika perlu
                     break;
                 } else {
                     printf("\nUsername atau password Admin salah!\n");
