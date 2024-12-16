@@ -124,10 +124,9 @@ void signUpPelanggan(akun *A1) {
 
 // Fungsi login utama
 int login(akun *A1) {
-    bool isValid = true;
     char input[100];
 
-    while (isValid) {
+    while (1) {
         system("cls");
         printf("========================================\n");
         printf("       Selamat Datang di C'Nema         \n");
@@ -158,7 +157,7 @@ int login(akun *A1) {
                     printf("\nLogin Admin berhasil! Selamat datang, %s.\n", username);
                     sleep(2);
                     system("cls");
-                    break;
+                    return 1; // Login sebagai admin
                 } else {
                     printf("\nUsername atau password Admin salah!\n");
                     sleep(2);
@@ -183,8 +182,7 @@ int login(akun *A1) {
 
                         if ((*A1).pilih == 1) {
                             masukPelanggan(A1);
-                            isValid = !isValid;
-                            break;
+                            return 2; // Login sebagai pelanggan
 
                         } else if ((*A1).pilih == 2) {
                             signUpPelanggan(A1);
@@ -208,5 +206,5 @@ int login(akun *A1) {
             sleep(2);
         }
     }
-    return 0;
+    return 0; // Gagal login
 }
