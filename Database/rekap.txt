@@ -1,0 +1,1 @@
+TanggalTayang namaFilm hargaTiket jumlahTiket totalPendapatan

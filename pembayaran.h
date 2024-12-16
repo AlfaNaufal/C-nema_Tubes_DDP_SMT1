@@ -1,24 +1,15 @@
 #ifndef pembayaran_h
 #define pembayaran_h
 
+#include "film.h"
+#include "bioskop.h"
+#include "detail.h"
 
-typedef struct{
+// Fungsi untuk menyimpan riwayat transaksi
+void simpanRiwayat(const char *waktu, const char *film, const char *bioskop, const char *tanggal,
+                   const char *jam, const char *kursi[], int hargaPerTiket, int jumlahTiket, int totalBayar);
 
-    int idPembelian;
-    int jumlahTiket;
-    int hargaTiket;
-    int totalHarga;
-    
-
-
-} bayar;
-
+// Fungsi pembayaran
 void pembayaran();
-float hitungtTotalHarga();
-float hitungtKembalian();
-int validasiPembayaran();
-
- 
-
 
 #endif

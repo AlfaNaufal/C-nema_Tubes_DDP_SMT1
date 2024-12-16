@@ -10,8 +10,8 @@
 #include "detail.h"
 
     // Mengambil film yang dipilih dari file film.c
-    film selectedFilm;
-    bioskop selectedBioskop;
+    // extern film selectedFilm;
+    // extern bioskop selectedBioskop;
     char waktuFormatted[50];
     char tanggalDipilih[4][30];
     int tanggalPilihan;
