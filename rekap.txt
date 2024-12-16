@@ -1,6 +1,6 @@
-07 December 2024 | The Lion King | Metro Indah Mall | Rp. 30000 | 2 | Rp. 60000 | 10:00 PM | A1 ,C4 
-09 December 2024 | Avengers: Endgame | Trans Studio Mall | Rp. 30000 | 1 | Rp. 30000 | 01:00 PM | A2 
-17 December 2024 | Avengers: Endgame | Metro Indah Mall | Rp. 30000 | 2 | Rp. 60000 | 10:00 AM | A1 ,B3 
-17 December 2024 | Inception | Istana Plaza | Rp. 30000 | 3 | Rp. 90000 | 01:00 PM | A1 ,C5 ,B6 
-17 December 2024 | Frozen II | 23 Paskal Shopping Center | Rp. 30000 | 3 | Rp. 90000 | 04:00 PM | A1 ,A2 ,A3
+07-12-2024 | The Lion King | Metro Indah Mall | Rp. 30000 | 2 | Rp. 60000 | 10:00 PM | A1 ,C4 
+09-12-2024 | Avengers: Endgame | Trans Studio Mall | Rp. 30000 | 1 | Rp. 30000 | 01:00 PM | A2 
+17-12-2024 | Avengers: Endgame | Metro Indah Mall | Rp. 30000 | 2 | Rp. 60000 | 10:00 AM | A1 ,B3 
+17-12-2024 | Inception | Istana Plaza | Rp. 30000 | 3 | Rp. 90000 | 01:00 PM | A1 ,C5 ,B6 
+17-12-2024 | Frozen II | 23 Paskal Shopping Center | Rp. 30000 | 3 | Rp. 90000 | 04:00 PM | A1 ,A2 ,A3
 17-12-2024 | The Lion King | Summarecon Mall Bandung | Rp. 30000 | 2 | Rp. 60000 | 01:00 PM | A2 ,B5

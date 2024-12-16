@@ -73,7 +73,9 @@ void tampilRekapitulasi() {
 
     // Baca setiap baris dalam file
     while (fgets(buffer, sizeof(buffer), file)) {
-        char *tanggal = strtok(buffer, "|");
+        char *tanggal = strtok(buffer, "-");
+        char *bulan = strtok(buffer, "-");
+        char *tahun = strtok(buffer, "|");
         char *film = strtok(NULL, "|");
         char *bioskop = strtok(NULL, "|");
         char *hargaPerTiket = strtok(NULL, "|");
@@ -84,6 +86,8 @@ void tampilRekapitulasi() {
 
         // Menampilkan data yang diambil
         printf("Tanggal        : %s\n", tanggal);
+        printf("Bulan        : %s\n", bulan);
+        printf("Tahun        : %s\n", tahun);
         printf("Film           : %s\n", film);
         printf("Bioskop        : %s\n", bioskop);
         printf("Harga per Tiket: %s\n", hargaPerTiket);
