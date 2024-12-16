@@ -39,7 +39,7 @@ void pilihJadwal() {
         struct tm temp = waktuSekarang;
         temp.tm_mday += i;
         mktime(&temp);
-        strftime(tanggalDipilih[i], sizeof(tanggalDipilih[i]), "%d %B %Y", &temp);
+        strftime(tanggalDipilih[i], sizeof(tanggalDipilih[i]), "%d-%m-%Y", &temp);
         printf("%d. %s\n", i + 1, tanggalDipilih[i]);
     }
     printf("----------------------------------------\n");

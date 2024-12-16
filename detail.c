@@ -82,7 +82,11 @@
             printf("Jam    : %s\n", jamDipilih);
             printf("Kursi  : ");
             for (int i = 0; i < jumlah; i++) {
-                printf("%s ", K1->K[i]);
+                if (i == jumlah - 1) {
+                    printf("%s", K1->K[i]);
+                }else{
+                    printf("%s ,", K1->K[i]);
+                }
             }
             printf("\n========================================\n");
 

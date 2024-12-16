@@ -2,12 +2,14 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include "bioskop.h"
 #include "film.h"
 #include "kursi.h"
 #include "rekap.h"
 
 #define FILENAME_REKAP "rekap.txt"
+#define MAX_REKAP 150
 
 // Variabel eksternal untuk data dari modul lain
 extern char waktuFormatted[50];
@@ -28,7 +30,7 @@ void simpanRekapitulasi( const char *waktuFormatted, film selectedFilm, bioskop 
     }
 
     // Tulis data ke dalam file
-    fprintf(file, "%s | %s | %s | Rp. 30000 | %d | Rp. %d | %s | %s | ", 
+    fprintf(file, "%s | %s | %s | Rp. 30000 | %d | Rp. %d | %s | ", 
             tanggalDipilih[tanggalPilihan - 1], 
             selectedFilm.judul, 
             selectedBioskop.namaMall, 
@@ -38,7 +40,12 @@ void simpanRekapitulasi( const char *waktuFormatted, film selectedFilm, bioskop 
 
     // Tulis kursi yang dipilih
     for (int i = 0; i < jumlah; i++) {
-        fprintf(file, "%s ", K1->K[i]);
+        if (i == jumlah - 1) {
+            fprintf(file, "%s", K1->K[i]);
+        }else{
+            fprintf(file, "%s ,", K1->K[i]);
+        }
+        // fprintf(file, "%s ", K1->K[i]);
     }
 
     // Menambahkan baris baru setelah setiap transaksi
@@ -49,6 +56,51 @@ void simpanRekapitulasi( const char *waktuFormatted, film selectedFilm, bioskop 
     printf("Rekapitulasi berhasil disimpan ke file.\n");
 }
 
+
+void tampilRekapitulasi() {
+    // Buka file rekapitulasi untuk menambahkan data
+    FILE *file = fopen(FILENAME_REKAP, "r");
+    if (file == NULL) {
+        printf("Gagal membuka file rekap.\n");
+        return;
+    }
+
+    char buffer[MAX_REKAP];
+
+    printf("==========================================\n");
+    printf("             Data Dekapitulasi            \n");
+    printf("==========================================\n");
+
+    // Baca setiap baris dalam file
+    while (fgets(buffer, sizeof(buffer), file)) {
+        char *tanggal = strtok(buffer, "|");
+        char *film = strtok(NULL, "|");
+        char *bioskop = strtok(NULL, "|");
+        char *hargaPerTiket = strtok(NULL, "|");
+        char *jumlahTiket = strtok(NULL, "|");
+        char *totalPendapatan = strtok(NULL, "|");
+        char *jam = strtok(NULL, "|");
+        char *kursi = strtok(NULL, "\n");
+
+        // Menampilkan data yang diambil
+        printf("Tanggal        : %s\n", tanggal);
+        printf("Film           : %s\n", film);
+        printf("Bioskop        : %s\n", bioskop);
+        printf("Harga per Tiket: %s\n", hargaPerTiket);
+        printf("Jumlah Tiket   : %s\n", jumlahTiket);
+        printf("Total Pendapatan: %s\n", totalPendapatan);
+        printf("Jam            : %s\n", jam);
+        printf("Kursi          : %s\n", kursi);
+        printf("==========================================\n");
+    }
+
+    fclose(file);
+
+
+    printf("0. Kembali\n");
+
+    // return scanf("%s", &pilihan);
+}
 
 
 
