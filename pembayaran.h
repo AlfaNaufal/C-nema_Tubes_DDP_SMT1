@@ -3,11 +3,21 @@
 
 
 typedef struct{
+
+    int idPembelian;
+    int jumlahTiket;
+    int hargaTiket;
     int totalHarga;
+    
+
 
 } bayar;
 
-float Hitung totalHarga();
+void pembayaran();
+float hitungtTotalHarga();
+float hitungtKembalian();
+int validasiPembayaran();
+
  
 
 
