@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "pembayaran.h"
+#include "rekap.h"
 
 // Variabel eksternal untuk data dari modul lain
 extern char waktuFormatted[50];
@@ -44,6 +45,7 @@ void pembayaran() {
 
             if (konfirmasi == 'Y' || konfirmasi == 'y') {
                 saldoSaatIni -= totalBayar;
+                simpanRekapitulasi(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, &K1,  jumlah, totalBayar);
                 printf("\nPembayaran berhasil!\n");
                 printf("Saldo Anda saat ini: Rp. %d\n", saldoSaatIni);
                 printf("\nTerima kasih telah memesan tiket di C'Nema!\n");

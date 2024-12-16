@@ -10,8 +10,8 @@
 #include "detail.h"
 
     // Mengambil film yang dipilih dari file film.c
-    film selectedFilm;
-    bioskop selectedBioskop;
+    // extern film selectedFilm;
+    // extern bioskop selectedBioskop;
     char waktuFormatted[50];
     char tanggalDipilih[4][30];
     int tanggalPilihan;
@@ -39,7 +39,7 @@ void pilihJadwal() {
         struct tm temp = waktuSekarang;
         temp.tm_mday += i;
         mktime(&temp);
-        strftime(tanggalDipilih[i], sizeof(tanggalDipilih[i]), "%d %B %Y", &temp);
+        strftime(tanggalDipilih[i], sizeof(tanggalDipilih[i]), "%d-%m-%Y", &temp);
         printf("%d. %s\n", i + 1, tanggalDipilih[i]);
     }
     printf("----------------------------------------\n");

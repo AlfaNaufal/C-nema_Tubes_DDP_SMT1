@@ -67,6 +67,7 @@
             printf("========================================\n");
 
         }
+        
         void detail5(const char *waktuFormatted, film selectedFilm, bioskop selectedBioskop, char tanggalDipilih[][30], int tanggalPilihan, const char *jamDipilih, kursi *K1, int jumlah){
             
             // Menampilkan waktu sekarang, film, genre, tanggal tayang, dan jam tayang
@@ -81,7 +82,11 @@
             printf("Jam    : %s\n", jamDipilih);
             printf("Kursi  : ");
             for (int i = 0; i < jumlah; i++) {
-                printf("%s ", K1->K[i]);
+                if (i == jumlah - 1) {
+                    printf("%s", K1->K[i]);
+                }else{
+                    printf("%s ,", K1->K[i]);
+                }
             }
             printf("\n========================================\n");
 
@@ -101,3 +106,19 @@
         //     printf("========================================\n");
 
         // }
+
+        void detailPembayaran(const char *waktuFormatted, film selectedFilm, bioskop selectedBioskop, char tanggalDipilih[][30], int tanggalPilihan, const char *jamDipilih){
+            
+            // Menampilkan waktu sekarang, film, genre, tanggal tayang, dan jam tayang
+            printf("========================================\n");
+            printf("        Detail Pembelian Tiket         \n");
+            printf("========================================\n");
+            printf("Waktu Saat Ini: %s\n", waktuFormatted);
+            printf("Film   : %s\n", selectedFilm.judul);
+            printf("Genre  : %s\n", selectedFilm.genre);
+            printf("Bioskop: %s - %s\n", selectedBioskop.namaMall, selectedBioskop.jenisBioskop);
+            printf("Tanggal: %s\n", tanggalDipilih[tanggalPilihan - 1]);
+            printf("Jam    : %s\n", jamDipilih);
+            printf("========================================\n");
+
+        }

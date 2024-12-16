@@ -2,11 +2,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 #include "home.h"
 #include "film.h"          // Untuk memilih film
 #include "jadwal.h"        // Untuk memilih jadwal
 #include "kursi.h"         // Untuk memilih kursi
 #include "pembayaran.h"    // Untuk melakukan pembayaran
+#include "rekap.h"         // Untuk melakukan rekap
 
 // Variabel eksternal yang digunakan dari modul lain
 extern char waktuFormatted[50];
@@ -38,6 +40,7 @@ void tampilkanHistory() {
 void tampilkanHome() {
     int pilihan;
     int running = 1;
+    // char 
 
     while (running) {
         system("cls");
@@ -83,13 +86,15 @@ void tampilkanHome() {
                 break;
             case 2:
                 system("cls"); // Bersihkan layar
-                printf("========================================\n");
-                printf("            Riwayat Pembelian           \n");
-                printf("========================================\n");
-                printf("========================================\n");
-                printf("\nTekan enter untuk kembali ke menu utama...");
-                getchar(); // Tunggu pengguna menekan enter
-                getchar(); // Untuk menangkap karakter enter sebelumnya
+                tampilRekapitulasi();
+                scanf("%d", &pilihan);
+                // printf("========================================\n");
+                // printf("            Riwayat Pembelian           \n");
+                // printf("========================================\n");
+                // printf("========================================\n");
+                // printf("\nTekan enter untuk kembali ke menu utama...");
+                // getchar(); // Tunggu pengguna menekan enter
+                // getchar(); // Untuk menangkap karakter enter sebelumnya
                 break;
             case 3:
                 // Keluar dari program

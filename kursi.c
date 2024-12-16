@@ -7,17 +7,8 @@
 #include "film.h"
 #include "jadwal.h"
 
-film selectedFilm;
-
-char waktuFormatted[50];
-char tanggalDipilih[4][30];
-int tanggalPilihan;
-
-int validJam;
-int jamPilihan;
-char jamDipilih[10];
-
 kursi K1;
+
 int jumlah;
 
 void memilihKursi(kursi *K1);
@@ -28,9 +19,13 @@ int pilihKursi() {
     memilihKursi(&K1);
 
     printf("\nTerima kasih telah memesan kursi!\n");
+    sleep(2);
+    system("cls");
     return 0;
 }
 
+
+//Fungsi untuk menampilkan layout kursi-Buka
 void tampilKursi(){
         
         printf("\nSilakan Untuk Memilih Kursi\n");
@@ -46,7 +41,10 @@ void tampilKursi(){
         printf("\n\n");
 
 }
+//Fungsi untuk menampilkan layout kursi-Tutup
 
+
+//Fungsi untuk memilih kursi-Buka
 void memilihKursi(kursi *K1) {
     int i, j, valid;
     static char dipesan[18][3] = {0}; // Kursi yang sudah dipesan
@@ -132,11 +130,6 @@ void memilihKursi(kursi *K1) {
         system("cls");
 
         detail5(waktuFormatted, selectedFilm, selectedBioskop, tanggalDipilih, tanggalPilihan, jamDipilih, K1, jumlah);
-        
-        // printf("\nKursi yang Anda pilih:\n");
-        // for (i = 0; i < jumlah; i++) {
-        //     printf("%s ", K1->K[i]);
-        // }
 
         K1->harga = jumlah * 30000;
         printf("\nHarga per Tiket: Rp.30000");
@@ -156,7 +149,7 @@ void memilihKursi(kursi *K1) {
             system("cls");
             continue;
         } else {
-            printf("\nInput tidak valid! Silakan ulangi proses.\n");
+            printf("\nInput tidak valid! Silakan ulangi pemilihan.\n");
         }
     }
 }
