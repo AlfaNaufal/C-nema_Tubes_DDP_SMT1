@@ -1,6 +1,8 @@
 #ifndef bioskop_h
 #define bioskop_h
 
+#include "film.h"
+
 // Struktur untuk menyimpan informasi bioskop
 typedef struct {
     int pilih;
@@ -9,6 +11,7 @@ typedef struct {
 } bioskop;
 
 extern bioskop selectedBioskop;
+extern film selectedFilm;
 
 // Fungsi untuk memilih bioskop
 void pilihBioskop();

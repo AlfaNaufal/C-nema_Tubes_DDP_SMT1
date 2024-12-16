@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <unistd.h>
 #include "bioskop.h"
 #include "film.h"
-#include "film.h"
+#include "detail.h"
 
 // Daftar bioskop yang tersedia
 bioskop daftarBioskop[] = {

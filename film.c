@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <unistd.h>
 #include "film.h"
 
 // Daftar film yang tersedia
@@ -26,6 +27,7 @@ void pilihFilm() {
 
     while (1) {
         // Menampilkan daftar film
+        system("cls");
         printf("========================================\n");
         printf("            Daftar Film C'Nema         \n");
         printf("========================================\n");
